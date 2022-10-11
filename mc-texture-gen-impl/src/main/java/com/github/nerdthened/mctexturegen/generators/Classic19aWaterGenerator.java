@@ -10,7 +10,7 @@ public final class Classic19aWaterGenerator extends AbstractLiquidGenerator {
      * Creates a new Classic 0.0.19a water texture generator.
      */
     public Classic19aWaterGenerator() {
-        super("Classic_19a_Water");
+        super("Infdev_Flowing_Water");
     }
 
     /**
@@ -26,15 +26,15 @@ public final class Classic19aWaterGenerator extends AbstractLiquidGenerator {
 
                 // Iterates through (x - 1, y) to (x + 1, y), and accumulates the previous pixel value at each location into localPixelIntensity.
                 // Only iterating over the x values causes the water to generate horizontal "stripes", as the y value does not change.
-                for (int localWaterX = currentWaterX - 1; localWaterX <= (currentWaterX + 1); ++localWaterX) {
+                for (int localWaterX = currentWaterY - 2; localWaterX <= (currentWaterY); ++localWaterX) {
                     // Restrict the adjusted x coordinate to be in range of the maximum valid coordinate (STANDARD_IMAGE_SIZE).
                     // If the x coordinate is out of range, it wraps to be in range.
-                    localPixelIntensity += liquidImagePrevious[(localWaterX & STANDARD_IMAGE_SIZE_BITMASK) + (currentWaterY * STANDARD_IMAGE_SIZE)];
+                    localPixelIntensity += liquidImagePrevious[(currentWaterY & STANDARD_IMAGE_SIZE_BITMASK) + (localWaterX * STANDARD_IMAGE_SIZE)];
                 }
 
                 final int currentWaterOffset = currentWaterX + (currentWaterY * STANDARD_IMAGE_SIZE);
                 // localPixelIntensity is divided by 3.3F, because it samples from 3 x points.
-                liquidImageCurrent[currentWaterOffset] = (localPixelIntensity / 3.3F) + (liquidIntensity[currentWaterOffset] * 0.8F);
+                liquidImageCurrent[currentWaterOffset] = (localPixelIntensity / 3.2F) + (liquidIntensity[currentWaterOffset] * 0.8F);
             }
         }
 
@@ -48,7 +48,7 @@ public final class Classic19aWaterGenerator extends AbstractLiquidGenerator {
                     liquidIntensity[currentWaterOffset] = 0.0F;
                 }
 
-                liquidIntensityIntensity[currentWaterOffset] = rand.nextDouble() < 0.05 ? 0.5F : (liquidIntensityIntensity[currentWaterOffset] - 0.1F);
+                liquidIntensityIntensity[currentWaterOffset] = rand.nextDouble() < 0.2 ? 0.5F : (liquidIntensityIntensity[currentWaterOffset] - 0.3F);
             }
         }
     }

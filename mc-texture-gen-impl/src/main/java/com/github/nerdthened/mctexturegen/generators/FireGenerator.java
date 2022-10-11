@@ -13,10 +13,10 @@ import com.github.nerdthened.mctexturegen.data.TextureGroup;
 public final class FireGenerator extends AbstractTextureGenerator {
 
     /** How wide the fire texture is. */
-    private static final int FIRE_TEXTURE_WIDTH = 16 * STANDARD_IMAGE_SIZE_MULTIPLIER;
+    private static final int FIRE_TEXTURE_WIDTH = 32 * STANDARD_IMAGE_SIZE_MULTIPLIER;
 
     /** How high the fire texture is. */
-    private static final int FIRE_TEXTURE_HEIGHT = 20 * STANDARD_IMAGE_SIZE_MULTIPLIER;
+    private static final int FIRE_TEXTURE_HEIGHT = 40 * STANDARD_IMAGE_SIZE_MULTIPLIER;
 
     /** How many pixels left to sample from when generating the texture. */
     private static final int SAMPLE_X_LEFT = 1;

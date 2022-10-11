@@ -10,7 +10,7 @@ public final class Classic19aWaterGenerator extends AbstractLiquidGenerator {
      * Creates a new Classic 0.0.19a water texture generator.
      */
     public Classic19aWaterGenerator() {
-        super("Infdev_Flowing_Water");
+        super("Classic_19a_Water");
     }
 
     /**
@@ -29,7 +29,7 @@ public final class Classic19aWaterGenerator extends AbstractLiquidGenerator {
                 for (int localWaterX = currentWaterY - 2; localWaterX <= (currentWaterY); ++localWaterX) {
                     // Restrict the adjusted x coordinate to be in range of the maximum valid coordinate (STANDARD_IMAGE_SIZE).
                     // If the x coordinate is out of range, it wraps to be in range.
-                    localPixelIntensity += liquidImagePrevious[(currentWaterY & STANDARD_IMAGE_SIZE_BITMASK) + (localWaterX * STANDARD_IMAGE_SIZE)];
+                    localPixelIntensity += liquidImagePrevious[(localWaterX & STANDARD_IMAGE_SIZE_BITMASK) + (currentWaterY * STANDARD_IMAGE_SIZE)];
                 }
 
                 final int currentWaterOffset = currentWaterX + (currentWaterY * STANDARD_IMAGE_SIZE);
